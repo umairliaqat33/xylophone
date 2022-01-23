@@ -3,25 +3,52 @@ import 'package:audioplayers/audioplayers.dart';
 
 
 void main(){
-  runApp(MyApp());
+  runApp(Piano());
 }
 
-class MyApp extends StatelessWidget {
+class Piano extends StatefulWidget {
+  const Piano({Key? key}) : super(key: key);
+
+  @override
+  State<Piano> createState() => _PianoState();
+}
+
+class _PianoState extends State<Piano> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyApp(),
+    );
+  }
+}
+
+
+
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
 void playsound(var sound )
 {
   final player=AudioCache();
   player.play("note$sound.wav");
 }
+
 void call({required Color color,required int num }){
       Expanded(
         child: TextButton(onPressed: (){
-          playsound(7);
+          playsound(1);
         }, child: Text(''),
       ),
       );
 }
+
   @override
   Widget build(BuildContext context) {
+  var wid=MediaQuery.of(context).size.width;
+  var hgt=MediaQuery.of(context).size.height;
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.transparent,
@@ -31,9 +58,9 @@ void call({required Color color,required int num }){
             Row(
               children: [
                 Container(
-                  color: Colors.red,
-                  width: 400,
-                  height: 100,
+                  color: Colors.yellow,
+                  width: wid,
+                  height: hgt/7.29,
                   child: TextButton(onPressed: (){
                     playsound(1);
                   },
@@ -44,9 +71,9 @@ void call({required Color color,required int num }){
             Row(
               children: [
                 Container(
-                  color: Colors.orange,
-                  width: 400,
-                  height: 100,
+                  color: Colors.green,
+                  width: wid,
+                  height: hgt/7.29,
                   child: TextButton(onPressed: (){
                     playsound(2);
                   },
@@ -57,9 +84,9 @@ void call({required Color color,required int num }){
             Row(
               children: [
                 Container(
-                  color: Colors.orangeAccent,
-                  width: 400,
-                  height: 100,
+                  color: Colors.pink,
+                  width: wid,
+                  height: hgt/7.29,
                   child: TextButton(onPressed: (){
                     playsound(3);
                   },
@@ -70,9 +97,9 @@ void call({required Color color,required int num }){
             Row(
               children: [
                 Container(
-                  color: Colors.amber,
-                  width: 400,
-                  height: 100,
+                  color: Colors.grey,
+                  width: wid,
+                  height: hgt/7.29,
                   child: TextButton(onPressed: (){
                     playsound(4);
                   },
@@ -83,9 +110,9 @@ void call({required Color color,required int num }){
             Row(
               children: [
                 Container(
-                  color: Colors.amberAccent,
-                  width: 400,
-                  height: 100,
+                  color: Colors.amber,
+                  width: wid,
+                  height: hgt/7.29,
                   child: TextButton(onPressed: (){
                     playsound(5);
                   },
@@ -95,7 +122,10 @@ void call({required Color color,required int num }){
             ),
             Row(
               children: [
-                Expanded(
+                Container(
+                  color: Colors.deepPurple,
+                  width: wid,
+                  height: hgt/7.29,
                   child: TextButton(onPressed: (){
                     playsound(6);
                   },
@@ -105,7 +135,10 @@ void call({required Color color,required int num }){
             ),
             Row(
               children: [
-                Expanded(
+                Container(
+                  color: Colors.blue,
+                  width: wid,
+                  height: hgt/7.29,
                   child: TextButton(onPressed: (){
                     playsound(7);
                   },
@@ -113,6 +146,7 @@ void call({required Color color,required int num }){
                 ),
               ],
             ),
+
           ],
         ),
         ),
